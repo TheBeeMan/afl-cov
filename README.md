@@ -10,5 +10,7 @@ afl-cov本质是python脚本，核心是调用lcov和gcov指令。它们是系�
 
 ## 用法
 ./afl-cov -d /path/to/afl-fuzz-output/ --live --coverage-cmd \
+
 "LD_LIBRARY_PATH=./lib/.libs ./bin/.libs/somebin -i AFL_FILE -o out.bt" \
+
 --code-dir code-dir
