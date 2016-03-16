@@ -13,9 +13,10 @@ afl-cov本质是python脚本，核心是调用lcov和gcov指令。它们是系�
 
 "LD_LIBRARY_PATH=./lib/.libs ./bin/.libs/somebin -i AFL_FILE -o out.bt" \
 
---code-dir code-dir
+--code-dir code-dir  --lcov-web-all
 
-其中 --coverage-cmd是需要被执行的内部命令，它的参数中AFL_FILE会被替换成afl-fuzz-output下的queue子目录中的样本集，但是名称不变
+其中 --coverage-cmd是需要被执行的内部命令，它的参数中AFL_FILE会被替换成afl-fuzz-output下的queue子目录中的样本集，此处只具有指代意义
+另外 --lcov-web-all是使用genhtml产生web目录，里面每个样本被执行后都会产生相应的web目录，其中index.html文件记录代码覆盖情况。
 
 ##[链接][1]
 [1]: https://github.com/mrash/afl-cov
