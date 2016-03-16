@@ -7,6 +7,7 @@ afl-cov本质是python脚本，核心是调用lcov和gcov指令。它们是系�
 > * afl-fuzz运行被somebin，跑样本集
 > * afl-cov调用copybin执行afl-fuzz-output目录下的queue子目录中的样本集
 > * afl-cov调用lcov捕获copybin执行后的代码覆盖信息，生成报告
+
 ## 用法
 ./afl-cov -d /path/to/afl-fuzz-output/ --live --coverage-cmd \
 "LD_LIBRARY_PATH=./lib/.libs ./bin/.libs/somebin -i AFL_FILE -o out.bt" \
