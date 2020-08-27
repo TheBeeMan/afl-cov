@@ -27,7 +27,8 @@ afl-fuzz -i input -o output xxx -a x86 -d path -f @@
 那么使用afl-cov的命令为：
 ```sh
 afl-cov -d /path/to-afl-fuzz-output/ --live --coverage-cmd \
-"xxx -i AFL_FILE -a x86 -d path -f"
+"xxx -i AFL_FILE -a x86 -d path -f" \
+--code-dir code-dir  --lcov-web-all
 ```
 
 ## [linkage][1]
