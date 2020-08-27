@@ -1,4 +1,4 @@
-# afl-cov: afl-fuzz代码覆盖度测试工具
+# afl-cov: afl-fuzz代码覆盖率可视化工具
 afl-cov是afl-fuzz的代码覆盖度测试插件，能够获取被测试程序的源码覆盖率，监测源码中被执行过的代码路径以及具体的函数名称，帮助漏洞挖掘人员分析样本在测试程序中的执行情况，辅助分析人员有效地改进样本集，以达到覆盖更多执行路径的目的。
 
 ## Overiew
@@ -18,6 +18,17 @@ afl-cov核心是调用lcov和gcov指令，它俩是GCC的代码覆盖率测试�
 
 其中 --coverage-cmd是需要被执行的内部命令，它的参数中AFL_FILE会被替换成afl-fuzz-output下的queue子目录中的样本集，此处只具有指代意义
 另外 --lcov-web-all是使用genhtml产生web目录，里面每个样本被执行后都会产生相应的web目录，其中index.html文件记录代码覆盖情况。
+还有--code-dir 后跟被测试对象的源码根目录
+
+比如说，如果afl正在fuzz如下指令的程序：
+```sh
+afl-fuzz -i input -o output xxx -a x86 -d path -f @@
+```
+那么使用afl-cov的命令为：
+```sh
+afl-cov -d /path/to-afl-fuzz-output/ --live --coverage-cmd \
+"xxx -i AFL_FILE -a x86 -d path -f"
+```
 
 ## [linkage][1]
 [1]: https://github.com/mrash/afl-cov
